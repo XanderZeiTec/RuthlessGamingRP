@@ -14,13 +14,13 @@ class htmlParser {
 	 *
 	 * @var string
 	 */
-	public $separator = '-{}-'; 
+	public $separator = '-{}- 
 	/**
 	 * Single tags: The tags like <img /> (which end in /> and don't have any innerhtml in them)
 	 *
 	 * @var string
 	 */
-	public $singleTags = 'meta|img|hr|br|link|!--|!DOCTYPE|input|col';
+	public $singleTags = 'meta|img|hr|br|link|!--|!DOCTYPE|input|col
  
 	//-- Don't edit below this --
  
@@ -74,7 +74,7 @@ class htmlParser {
 					if ($singleTag) {
 						$this->idArray [$_id]['htmlText'] = $innerHtml;
 					} else {
-						$this->idArray [$_id]['htmlText'] = '<'.$tag.' '.$attr.'>'.$innerHtml.'</'.$tag.'>';
+						$this->idArray [$_id]['htmlText'] = '<'.$tag.' '.$attr.'>'.$innerHtml.'</'.$tag.'>
 					}
 				}
 			}
@@ -86,7 +86,7 @@ class htmlParser {
 		}
 	}
 	private function removeWhiteSpace ($string='') {
-		$string = str_replace(array("\n","\r",'&nbsp;',"\t"),'',$string);
+		$string = str_replace(array("n","r",'&nbsp;',"t"),'',$string);
 		return preg_replace('|  +|', ' ', $string);
 	}
 	private function replaceSingleTags() {
@@ -106,7 +106,7 @@ class htmlParser {
 	}
 	private function replaceRemainingTags() {
 		//tags that remain after everything
-		$result=preg_match_all('/<(.[^\s]*)(.[^><]*)?>(.*)?<\/\1>/imU', $this->html, $m);
+		$result=preg_match_all('/<(.[^s]*)(.[^><]*)?>(.*)?</1>/imU', $this->html, $m);
 		if ($result>0) {
 			$this->level++;
 			for ($i=0;$i<$result;$i++) {
@@ -115,7 +115,7 @@ class htmlParser {
 		}
 	}
 	private function existSimpleTags() {
-		$result=preg_match_all('/<(.[^\s]*)(.[^><]*)?>(.[^<]*)?<\/\1>/imU', $this->html, $m);
+		$result=preg_match_all('/<(.[^s]*)(.[^><]*)?>(.[^<]*)?</1>/imU', $this->html, $m);
 		$this->aSimpleTags = $m;
 		$this->nSimpleTags = $result;
 		return $result>0;
